@@ -25,9 +25,11 @@ class WeixinSpider():
         time.sleep(30)
         #浏览器打开时间
         driver.find_element_by_name("account").clear()
-        driver.find_element_by_name("account").send_keys("ps808080@163.com")
+        driver.find_element_by_xpath("./*//input[@id='account']").send_keys('ps808080@163.com')
+        #driver.find_element_by_name("account").send_keys("ps808080@163.com")
         driver.find_element_by_name("password").clear()
-        driver.find_element_by_name("password").send_keys("xiaoxiao80")
+        driver.find_element_by_xpath("./*//input[@id='pwd']").send_keys('xiaoxiao80')
+        #driver.find_element_by_name("password").send_keys("xiaoxiao80")
 
         driver.find_element_by_xpath('//div[@class="login_btn_panel"]/a[@title="点击登录"]').click()
         time.sleep(10)
@@ -131,7 +133,7 @@ if __name__=='__main__':
     try:
 
         a = WeixinSpider()
-        query = raw_input("请输入需要爬取的公众号")
+        query = raw_input("请输入需要爬取的公众号:")
         print("开始爬取公众号：" + query)
         a.get_content(query)
         print("爬取完成")
